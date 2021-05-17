@@ -4,4 +4,6 @@
     <string name="author">author</string>
     <string name="date">date</string>
     <string name="description">description</string>
+    <string name="top_news">Top News</string>
+    <string name="indonesia_news_today">Indonesia News Today</string>
 </resources>
