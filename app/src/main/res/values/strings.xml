@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">iniNews</string>
+    <string name="title">Title</string>
+    <string name="author">author</string>
+    <string name="date">date</string>
+    <string name="description">description</string>
+</resources>
