@@ -2,19 +2,52 @@ package id.zlz.ininews.model
 
 import android.os.Parcel
 import android.os.Parcelable
-import android.util.Log
 
 data class DataNews(
-    var title: String = "",
-    var author: String = "",
-    var date: String = "",
-    var desc: String = "",
-    var content: String = "",
-    var imagenews: String = ""
-)
+    var title: String? = "",
+    var author: String? = "",
+    var date: String? = "",
+    var desc: String? = "",
+    var content: String? = "",
+    var imagenews: String? = ""
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString()
+    )
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(title)
+        parcel.writeString(author)
+        parcel.writeString(date)
+        parcel.writeString(desc)
+        parcel.writeString(content)
+        parcel.writeString(imagenews)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<DataNews> {
+        override fun createFromParcel(parcel: Parcel): DataNews {
+            return DataNews(parcel)
+        }
+
+        override fun newArray(size: Int): Array<DataNews?> {
+            return arrayOfNulls(size)
+        }
+    }
+}
 
 object IndoNews {
-    private val title = arrayListOf(
+
+
+    private val title = arrayOf(
         "Teleskop James Webb, Teliti Galaksi Miliaran Tahun Lalu - Republika Online",
         "anda Diabetes yang Muncul di Bagian Jari Kaki : Dipicu oleh Naiknya Kadar Gula Darah - Tribun Jogja",
         "Ikut Aksi Bela Palestina, Supermodel Bella Hadid Dikecam Israel - Kompas.com - KOMPAS.com",
@@ -28,7 +61,7 @@ object IndoNews {
         "Elon Musk Bikin Gara-gara, Harga Bitcoin Jadi Anjlok ke Rp 624 Juta - detikFinance"
     )
 
-    private val author = arrayListOf(
+    private val author = arrayOf(
         "Dwi Murdaningsih",
         "Mona Kriesdinar",
         "Danur Lambang Pristiandaru",
@@ -42,7 +75,7 @@ object IndoNews {
         "Aulia Damayanti"
     )
 
-    private val publisheddate = arrayListOf(
+    private val publisheddate = arrayOf(
         "2021-05-17",
         "2021-05-17",
         "2021-05-17",
@@ -56,7 +89,7 @@ object IndoNews {
         "2021-05-17"
     )
 
-    private val desc = arrayListOf(
+    private val desc = arrayOf(
         "Teleskop James Webb akan menggantikan teleskop Hubble, beroperasi akhir tahun ini.",
         "Neuropati perifer adalah istilah medis untuk menggambarkan serabut saraf yang rusak akibat kadar gula darah tinggi tersebut.",
         "Israel mengecam supermodel Bella Hadid karena mengikuti aksi bela Palestina di Brooklyn, Amerika Serikat (AS). Halaman all",
@@ -70,7 +103,7 @@ object IndoNews {
         "Cuitan Elon Musk di Twitter lagi-lagi mempengaruhi harga Bitcoin. Uang kripto terbesar di dunia itu merosot 8% menjadi US$ 44.000 setara Rp 624 juta."
     )
 
-    private val content = arrayListOf(
+    private val content = arrayOf(
         "Teleskop James Webb akan menggantikan teleskop Hubble, beroperasi akhir tahun ini.\\r\\n REPUBLIKA.CO.ID, JAKARTA -- Teleskop luar angkasa James Webb akan mulai beroperasi akhir 2021. Dengan teleskop ini…",
         "TRIBUNJOGJA.COM - Gejala diabetes tipe 2 pada awalnya sering kali tidak terlihat, tetapi kadar gula darah yang tinggi secara konsisten dapat meningkatkan perubahan yang lebih nyata. Dr Paul Ettlinger…",
         "EL AVIV, KOMPAS.com –Israel mengecam supermodel Bella Hadid karena mengikuti aksi bela Palestina di Brooklyn, Amerika Serikat (AS).\\r\\nKecaman tersebut disampaikan oleh Israel pada Minggu (16/5/2021)",
@@ -88,7 +121,7 @@ object IndoNews {
 
 
     private val imagenews =
-        arrayListOf(
+        arrayOf(
             "https://static.republika.co.id/uploads/images/inpicture_slide/teleskop-james_210517095512-977.jpg",
             "https://cdn-2.tstatic.net/jogja/foto/bank/images/diabetes-tipe-2.jpg",
             "https://asset.kompas.com/crops/ZKEj-nz6g2E33pgHZgyplbnF29w=/0x0:780x390/780x390/data/photo/2016/06/01/0031060bella-hadid780x390.jpg",
@@ -113,6 +146,7 @@ object IndoNews {
                 data.desc = desc[position]
                 data.content = content[position]
                 data.imagenews = imagenews[position]
+                list.add(data)
             }
             return list
         }

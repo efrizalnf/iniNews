@@ -12,12 +12,11 @@ import id.zlz.ininews.model.IndoNews.listNewsData
 class MainActivity : AppCompatActivity() {
     private var list: ArrayList<DataNews> = arrayListOf()
     lateinit var recyclerViewHorizontal: RecyclerView
+    val filtertopnews = listNewsData.filterIndexed { index, s -> index % 2 == 0 }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initRecyclerViewHorizontal()
-
-
     }
 
     fun initRecyclerViewHorizontal() {
@@ -26,7 +25,6 @@ class MainActivity : AppCompatActivity() {
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewHorizontal.adapter = NewsAdapterHorizontal(list)
         recyclerViewHorizontal.setHasFixedSize(true)
-        list.addAll(listNewsData)
-        Log.d("CEK", "cekmain :" +  recyclerViewHorizontal.adapter)
+        list.addAll(filtertopnews)
     }
 }

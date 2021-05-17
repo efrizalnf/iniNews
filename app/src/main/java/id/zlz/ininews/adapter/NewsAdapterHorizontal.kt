@@ -2,6 +2,7 @@ package id.zlz.ininews.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -13,8 +14,8 @@ class NewsAdapterHorizontal(private val listNews: ArrayList<DataNews>) :
     RecyclerView.Adapter<NewsViewHolderHorizontal>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolderHorizontal {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_news_vertical, parent, false)
+        val view:View =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_news_horizontal, parent, false)
         return NewsViewHolderHorizontal(view)
     }
 
@@ -28,9 +29,9 @@ class NewsAdapterHorizontal(private val listNews: ArrayList<DataNews>) :
         holderHorizontal.author.text = listData.author
         holderHorizontal.date.text = listData.date
         holderHorizontal.description.text = listData.desc
+
     }
 
-    override fun getItemCount(): Int {
-        return listNews.size
-    }
+    override fun getItemCount(): Int = listNews.size
+
 }

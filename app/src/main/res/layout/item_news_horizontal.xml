@@ -6,7 +6,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_item_horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         app:cardCornerRadius="12dp"
@@ -44,6 +44,8 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:fontFamily="sans-serif-black"
+                    android:maxLines="3"
+                    android:ellipsize="end"
                     android:text="@string/title"
                     android:textAllCaps="true"
                     android:textSize="14sp"
@@ -82,8 +84,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
-                    android:elegantTextHeight="true"
                     android:maxLines="2"
+                    android:ellipsize="end"
                     android:text="@string/description"
                     android:textSize="14sp"
                     android:tooltipText="@string/app_name" />
