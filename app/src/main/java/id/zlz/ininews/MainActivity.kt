@@ -1,5 +1,6 @@
 package id.zlz.ininews
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +12,7 @@ import id.zlz.ininews.adapter.NewsViewHolderVertical
 import id.zlz.ininews.model.DataNews
 import id.zlz.ininews.model.IndoNews.listDataNews
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NewsAdapterVertical.ListSelectionNews {
     private var listv: ArrayList<DataNews> = arrayListOf()
     private var listh: ArrayList<DataNews> = arrayListOf()
     lateinit var recyclerView: RecyclerView
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun initRecyclerViewHorizontal() {
-        recyclerView= findViewById(R.id.rv_horizontal)
+        recyclerView = findViewById(R.id.rv_horizontal)
         recyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = NewsAdapterHorizontal(listh)
@@ -36,9 +37,22 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.rv_vertical)
         recyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        recyclerView.adapter = NewsAdapterVertical(listv)
+        recyclerView.adapter = NewsAdapterVertical(listv, this)
         recyclerView.setHasFixedSize(true)
         listv.addAll(listDataNews)
     }
 
+
+    override fun onClickItem(list: DataNews) {
+        showDetailItemNews(list)
+    }
+
+    fun showDetailItemNews(item: DataNews) {
+        val i = Intent(this, DetailNewsActivity::class.java)
+        i.putExtra(INTENT_LIST, item)
+    }
+
+    companion object {
+        const val INTENT_LIST = "item_news"
+    }
 }
