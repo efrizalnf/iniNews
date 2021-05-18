@@ -3,7 +3,6 @@ package id.zlz.ininews.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -12,10 +11,6 @@ import id.zlz.ininews.model.DataNews
 
 class NewsAdapterVertical(private val listvertical : ArrayList<DataNews>, val listSelection:ListSelectionNews):
     RecyclerView.Adapter<NewsViewHolderVertical>() {
-
-    interface ListSelectionNews{
-        fun onClickItem(list: DataNews)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolderVertical {
         val viewVertical : View = LayoutInflater.from(parent.context).inflate(R.layout.item_news_vertical, parent, false)

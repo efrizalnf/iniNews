@@ -6,17 +6,19 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import id.zlz.ininews.adapter.ListSelectionNews
 import id.zlz.ininews.adapter.NewsAdapterHorizontal
 import id.zlz.ininews.adapter.NewsAdapterVertical
 import id.zlz.ininews.adapter.NewsViewHolderVertical
 import id.zlz.ininews.model.DataNews
 import id.zlz.ininews.model.IndoNews.listDataNews
 
-class MainActivity : AppCompatActivity(), NewsAdapterVertical.ListSelectionNews {
+class MainActivity : AppCompatActivity(), ListSelectionNews {
     private var listv: ArrayList<DataNews> = arrayListOf()
     private var listh: ArrayList<DataNews> = arrayListOf()
     lateinit var recyclerView: RecyclerView
     val filtertopnews = listDataNews.filterIndexed { index, s -> index % 2 == 0 }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,7 +30,7 @@ class MainActivity : AppCompatActivity(), NewsAdapterVertical.ListSelectionNews 
         recyclerView = findViewById(R.id.rv_horizontal)
         recyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.adapter = NewsAdapterHorizontal(listh)
+        recyclerView.adapter = NewsAdapterHorizontal(listh, this)
         recyclerView.setHasFixedSize(true)
         listh.addAll(filtertopnews)
     }
@@ -42,7 +44,6 @@ class MainActivity : AppCompatActivity(), NewsAdapterVertical.ListSelectionNews 
         listv.addAll(listDataNews)
     }
 
-
     override fun onClickItem(list: DataNews) {
         showDetailItemNews(list)
     }
@@ -50,6 +51,7 @@ class MainActivity : AppCompatActivity(), NewsAdapterVertical.ListSelectionNews 
     fun showDetailItemNews(item: DataNews) {
         val i = Intent(this, DetailNewsActivity::class.java)
         i.putExtra(INTENT_LIST, item)
+        startActivity(i)
     }
 
     companion object {

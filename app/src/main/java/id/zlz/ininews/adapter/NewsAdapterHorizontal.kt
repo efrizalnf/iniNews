@@ -10,7 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import id.zlz.ininews.R
 import id.zlz.ininews.model.DataNews
 
-class NewsAdapterHorizontal(private val listNews: ArrayList<DataNews>) :
+class NewsAdapterHorizontal(private val listNews: ArrayList<DataNews>, val listSelectionNews: ListSelectionNews) :
     RecyclerView.Adapter<NewsViewHolderHorizontal>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolderHorizontal {
@@ -29,6 +29,9 @@ class NewsAdapterHorizontal(private val listNews: ArrayList<DataNews>) :
         holderHorizontal.author.text = listData.author
         holderHorizontal.date.text = listData.date
         holderHorizontal.description.text = listData.desc
+        holderHorizontal.itemView.setOnClickListener {
+            listSelectionNews.onClickItem(listData)
+        }
 
     }
 
