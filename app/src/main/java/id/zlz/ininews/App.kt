@@ -3,17 +3,18 @@ package id.zlz.ininews
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import id.zlz.ininews.activity.AboutAppsActivity
+import id.zlz.ininews.activity.DetailNewsActivity
 import id.zlz.ininews.adapter.ListSelectionNews
 import id.zlz.ininews.adapter.NewsAdapterHorizontal
 import id.zlz.ininews.adapter.NewsAdapterVertical
-import id.zlz.ininews.adapter.NewsViewHolderVertical
 import id.zlz.ininews.model.DataNews
 import id.zlz.ininews.model.IndoNews.listDataNews
 
-class MainActivity : AppCompatActivity(), ListSelectionNews {
+class App : AppCompatActivity(), ListSelectionNews {
     private var listv: ArrayList<DataNews> = arrayListOf()
     private var listh: ArrayList<DataNews> = arrayListOf()
     lateinit var recyclerView: RecyclerView
@@ -24,6 +25,12 @@ class MainActivity : AppCompatActivity(), ListSelectionNews {
         setContentView(R.layout.activity_main)
         initRecyclerViewHorizontal()
         initRecyclerViewVertical()
+
+        val fab: View = findViewById(R.id.fab)
+        fab.setOnClickListener { view ->
+            val intent = Intent(this, AboutAppsActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     fun initRecyclerViewHorizontal() {

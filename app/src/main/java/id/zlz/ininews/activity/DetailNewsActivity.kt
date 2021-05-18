@@ -1,10 +1,12 @@
-package id.zlz.ininews
+package id.zlz.ininews.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import id.zlz.ininews.App
+import id.zlz.ininews.R
 import id.zlz.ininews.model.DataNews
 
 class DetailNewsActivity : AppCompatActivity() {
@@ -22,7 +24,7 @@ class DetailNewsActivity : AppCompatActivity() {
         val datedetail = findViewById(R.id.tv_date_detailnews) as TextView
         val contentdetail = findViewById(R.id.tv_content_detailnews) as TextView
         val imagedetail = findViewById(R.id.iv_detailnews) as ImageView
-        list = intent.getParcelableExtra(MainActivity.INTENT_LIST)!!
+        list = intent.getParcelableExtra(App.INTENT_LIST)!!
         title = list.title
 
         Glide.with(this).load(list.imagenews).into(imagedetail)

@@ -12,8 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IniNews">
-        <activity android:name=".DetailNewsActivity"></activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activity.AboutAppsActivity"></activity>
+        <activity android:name=".activity.DetailNewsActivity" />
+        <activity android:name=".App" />
         <activity
             android:name=".activity.SplashScreenActivity"
             android:theme="@style/AppTheme.Splash">

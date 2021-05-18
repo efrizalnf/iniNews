@@ -6,4 +6,11 @@
     <string name="description">description</string>
     <string name="top_news">Top News</string>
     <string name="indonesia_news_today">Indonesia News Today</string>
+    <string name="about">about apps</string>
+    <string name="efrizalnf">@efrizalnf</string>
+    <string name="email">ondabuzz9@gmail.com</string>
+    <string name="email_name">Email</string>
+    <string name="username">Username</string>
+    <string name="name_me">Efrizal NurulFajri</string>
+    <string name="name">Name</string>
 </resources>
