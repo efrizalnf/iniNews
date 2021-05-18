@@ -135,7 +135,7 @@ object IndoNews {
             "https://awsimages.detik.net.id/api/wm/2020/01/20/6defeb86-61bc-4881-af5b-905f09ec0cd5_169.jpeg?wid=54&w=650&v=1&t=jpeg"
         )
 
-    val listNewsData: ArrayList<DataNews>
+    val listDataNews: ArrayList<DataNews>
         get() {
             val list = arrayListOf<DataNews>()
             for (position in title.indices) {

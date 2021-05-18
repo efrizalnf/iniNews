@@ -32,6 +32,6 @@ class NewsAdapterHorizontal(private val listNews: ArrayList<DataNews>) :
 
     }
 
-    override fun getItemCount(): Int = listNews.size
+    override fun getItemCount() = listNews.size
 
 }

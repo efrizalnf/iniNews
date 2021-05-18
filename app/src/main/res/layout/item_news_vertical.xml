@@ -23,7 +23,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/iv_item_horizontal"
+                android:id="@+id/iv_item_vertical"
                 android:layout_width="match_parent"
                 android:scaleType="centerCrop"
                 android:layout_height="100dp"
@@ -38,7 +38,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_title_news_horizontal"
+                    android:id="@+id/tv_title_news_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
@@ -59,7 +59,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv_author_horizontal"
+                        android:id="@+id/tv_author_vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/author"
@@ -67,7 +67,7 @@
                         android:tooltipText="@string/app_name" />
 
                     <TextView
-                        android:id="@+id/tv_date_horizontal"
+                        android:id="@+id/tv_date_vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
@@ -79,7 +79,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/tv_desc_horizontal"
+                    android:id="@+id/tv_desc_vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
