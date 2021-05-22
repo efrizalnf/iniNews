@@ -3,7 +3,6 @@
     package="id.zlz.ininews">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +13,11 @@
         android:theme="@style/Theme.IniNews">
         <activity android:name=".activity.AboutAppsActivity"></activity>
         <activity android:name=".activity.DetailNewsActivity" />
-        <activity android:name=".App" />
+        <activity android:parentActivityName=".App" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".App" />
+        </activity>
         <activity
             android:name=".activity.SplashScreenActivity"
             android:theme="@style/AppTheme.Splash">
