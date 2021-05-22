@@ -12,11 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IniNews">
         <activity android:name=".activity.AboutAppsActivity"></activity>
-        <activity android:name=".activity.DetailNewsActivity" />
-        <activity android:parentActivityName=".App" >
+        <activity
+            android:name=".activity.DetailNewsActivity"
+            android:parentActivityName=".App">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".App" />
+        </activity>
+        <activity android:name=".App" >
         </activity>
         <activity
             android:name=".activity.SplashScreenActivity"
