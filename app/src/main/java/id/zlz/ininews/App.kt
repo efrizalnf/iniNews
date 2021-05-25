@@ -11,43 +11,42 @@ import id.zlz.ininews.activity.DetailNewsActivity
 import id.zlz.ininews.adapter.ListSelectionNews
 import id.zlz.ininews.adapter.NewsAdapterHorizontal
 import id.zlz.ininews.adapter.NewsAdapterVertical
+import id.zlz.ininews.databinding.ActivityMainBinding
 import id.zlz.ininews.model.DataNews
 import id.zlz.ininews.model.IndoNews.listDataNews
 
 class App : AppCompatActivity(), ListSelectionNews {
+    private lateinit var binding: ActivityMainBinding
     private var listv: ArrayList<DataNews> = arrayListOf()
     private var listh: ArrayList<DataNews> = arrayListOf()
-    lateinit var recyclerView: RecyclerView
     val filtertopnews = listDataNews.filterIndexed { index, s -> index % 2 == 0 }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initRecyclerViewHorizontal()
         initRecyclerViewVertical()
 
-        val fab: View = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
+        binding.fab.setOnClickListener { view ->
             val intent = Intent(this, AboutAppsActivity::class.java)
             startActivity(intent)
         }
     }
 
     fun initRecyclerViewHorizontal() {
-        recyclerView = findViewById(R.id.rv_horizontal)
-        recyclerView.layoutManager =
+        binding.rvHorizontal.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.adapter = NewsAdapterHorizontal(listh, this)
-        recyclerView.setHasFixedSize(true)
+        binding.rvHorizontal.adapter = NewsAdapterHorizontal(listh, this)
+        binding.rvHorizontal.setHasFixedSize(true)
         listh.addAll(filtertopnews)
     }
 
     fun initRecyclerViewVertical() {
-        recyclerView = findViewById(R.id.rv_vertical)
-        recyclerView.layoutManager =
+        binding.rvVertical.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        recyclerView.adapter = NewsAdapterVertical(listv, this)
-        recyclerView.setHasFixedSize(true)
+        binding.rvVertical.adapter = NewsAdapterVertical(listv, this)
+        binding.rvVertical.setHasFixedSize(true)
         listv.addAll(listDataNews)
     }
 

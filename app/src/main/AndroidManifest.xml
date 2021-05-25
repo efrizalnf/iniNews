@@ -19,8 +19,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".App" />
         </activity>
-        <activity android:name=".App" >
-        </activity>
+        <activity android:name=".App"></activity>
         <activity
             android:name=".activity.SplashScreenActivity"
             android:theme="@style/AppTheme.Splash">

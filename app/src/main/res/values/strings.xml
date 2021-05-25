@@ -13,4 +13,6 @@
     <string name="username">Username</string>
     <string name="name_me">Efrizal NurulFajri</string>
     <string name="name">Name</string>
+    <string name="news">News</string>
+    <string name="favourite">Favourite</string>
 </resources>
