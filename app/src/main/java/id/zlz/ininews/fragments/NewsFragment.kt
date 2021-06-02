@@ -16,6 +16,11 @@ import id.zlz.ininews.adapter.NewsAdapterVertical
 import id.zlz.ininews.databinding.FragmentNewsBinding
 import id.zlz.ininews.model.DataNews
 import id.zlz.ininews.model.IndoNews
+import id.zlz.ininews.room.NewsDb
+import id.zlz.ininews.room.NewsEntities
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class NewsFragment : Fragment(), ListSelectionNews {
@@ -24,7 +29,7 @@ class NewsFragment : Fragment(), ListSelectionNews {
     private var listv: ArrayList<DataNews> = arrayListOf()
     private var listh: ArrayList<DataNews> = arrayListOf()
     val filtertopnews = IndoNews.listDataNews.filterIndexed { index, s -> index % 2 == 0 }
-
+    val db by lazy { NewsDb(activity!!) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,6 +62,23 @@ class NewsFragment : Fragment(), ListSelectionNews {
     override fun onClickItem(list: DataNews) {
         showDetailItemNews(list)
     }
+
+    override fun onSave(listdata: DataNews) {
+        CoroutineScope(Dispatchers.IO).launch {
+            db.newsDao().insertFav(
+                NewsEntities(
+                    0,
+                    listdata.title.toString(),
+                    listdata.author.toString(),
+                    listdata.date.toString(),
+                    listdata.desc.toString(),
+                    listdata.content.toString(),
+                    listdata.imagenews.toString()
+                )
+            )
+        }
+    }
+
 
     fun showDetailItemNews(item: DataNews) {
         val i = Intent(activity, DetailNewsActivity::class.java)

@@ -7,7 +7,7 @@
     <item
         android:id="@+id/item_fav"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_favorite_24"
+        android:icon="@drawable/ic_favourite"
         android:title="@string/favourite" />
     <!--    <item android:id="@+id/action_navigation"-->
     <!--        android:title="@string/menu_navigation"-->

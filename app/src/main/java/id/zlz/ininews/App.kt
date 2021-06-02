@@ -6,9 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
 import com.bumptech.glide.manager.SupportRequestManagerFragment
 import id.zlz.ininews.activity.AboutAppsActivity
 import id.zlz.ininews.adapter.NewsAdapterHorizontal
@@ -26,13 +23,6 @@ class App : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        if (savedInstanceState == null) {
-            supportFragmentManager.commit {
-                setReorderingAllowed(true)
-                add<NewsFragment>(R.id.fl_home)
-            }
-        }
 
         initFragment()
 
@@ -63,9 +53,10 @@ class App : AppCompatActivity() {
 
     fun loadFragment(fragment: Fragment) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fl_home, fragment)
-        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.replace(R.id.fl_home, fragment, fragment.javaClass.getSimpleName())
+//        fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
+
     }
 
 
