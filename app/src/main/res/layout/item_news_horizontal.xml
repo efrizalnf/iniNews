@@ -27,7 +27,14 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:src="@mipmap/ic_launcher" />
-
+            <CheckBox
+                android:id="@+id/hfavbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:useMaterialThemeColors = "false"
+                android:layout_below="@+id/iv_item_horizontal"
+                android:button="@drawable/fav_selector"
+                />
             <LinearLayout
                 android:id="@+id/ll_textview_item"
                 android:layout_width="match_parent"
@@ -92,15 +99,7 @@
 
             </LinearLayout>
         </RelativeLayout>
-        <ImageView
-            android:id="@+id/favbutton"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:layout_marginEnd="10dp"
-            android:layout_gravity="right|center"
-            android:src="@drawable/ic_unfavourite"
-            android:outlineSpotShadowColor="@color/black"
-            android:layout_marginRight="10dp" />
+
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
